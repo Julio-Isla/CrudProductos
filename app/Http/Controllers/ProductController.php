@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         return inertia('products/index', [
-            'products' => []
+            'products' => Product::all()
         ]);
     }
 
@@ -23,7 +24,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('products/create',[
+            'products' => new Product()
+        ]);
     }
 
     /**
